@@ -1,6 +1,6 @@
 export default function Home(){
   return(
-    <main className="min-h-screen bg-white pl-16 pt-20 font-sans">
+    <main className="min-h-screen pl-16 pt-20 font-sans">
       <h1 className="text-5xl text-gray-900 mb-6">
         Sample title
         </h1>
