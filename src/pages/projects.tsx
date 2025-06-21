@@ -9,7 +9,7 @@ export default function Projects() {
     {
       id: 1,
       name: "SnapLang - In Development",
-      image: "/snaplang.png",
+      image: "/snaplangimg.png",
       description: "An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.\n\nThese translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.\n\nThis project is currently in development.",
     },
     {
