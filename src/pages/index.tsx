@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -64,11 +65,7 @@ export default function Home() {
           {/* Right: Profile Image */}
           <div className="flex-1 flex justify-center">
             <div className="w-72 h-96 md:w-80 md:h-[26rem] rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
-              <img
-                src="/profile.jpeg"
-                alt="Connor Kavleski"
-                className="w-full h-full object-cover"
-              />
+              <Image src="/profile.jpeg" alt="Connor Kavleski" width={300} height={300} className="w-full h-full object-cover" />
             </div>
           </div>
         </section>
@@ -80,8 +77,8 @@ export default function Home() {
               A little bit about me!
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Hi, I'm Connor! I'm a computer science student with a passion for machine learning, full-stack development, and building real tools that help people.
-              I've developed AI-powered tools like SnapLang and participated in hackathons and tech clubs at the New York City College of Technology in Brooklyn, New York.
+              Hi, I&apos;m Connor! I&apos;m a computer science student with a passion for machine learning, full-stack development, and building real tools that help people.
+              I&apos;ve developed AI-powered tools like SnapLang and participated in hackathons and tech clubs at the New York City College of Technology in Brooklyn, New York.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
               My journey began with a curiosity in the way computers can store, retrieve, and manipulate information. This curiosity combined with a desire to solve

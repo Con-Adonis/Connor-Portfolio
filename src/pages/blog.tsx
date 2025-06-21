@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import Image from "next/image";
 
 export default function Blog(){
     return(
@@ -10,7 +11,7 @@ export default function Blog(){
                 </h1>
 
                 <p className="text-gray-700 text-lg mb-6 max-w-xl loading-relaxes">
-                This site is still under development! Soon, this will be a page dedicated to giving blog updates on what I'm working on!
+                This site is still under development! Soon, this will be a page dedicated to giving blog updates on what I&apos;m working on!
                 </p>
                 <p className="text-gray-700 text-lg mb-6 max-w-xl loading-relaxes">
                 Stay tuned! :)

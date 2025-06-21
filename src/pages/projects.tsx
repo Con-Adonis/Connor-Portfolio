@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Projects() {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
@@ -45,12 +46,14 @@ export default function Projects() {
               <div
                 key={project.id}
                 onClick={() => setExpandedProject(project.id)}
-                className={`relative bg-gray-100 rounded-lg overflow-hidden w-full aspect-[4/3] max-w-sm shadow-lg group cursor-pointer transition hover:scale-105 hover:shadow-xl ${visibilityClass}`}
+                className={`relative bg-gray-100 rounded-lg overflow-hidden w-full h-full aspect-[4/3] max-w-sm shadow-lg group cursor-pointer transition hover:scale-105 hover:shadow-xl ${visibilityClass}`}
               >
-                <img
+                <Image
                   src={project.image}
                   alt={project.name}
-                  className="object-cover w-full h-full group-hover:scale-105 transition duration-300"
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute bottom-0 left-0 w-full bg-gray-200/75 text-black p-5 backdrop-blur-sm">
                   <h2 className="text-lg font-semibold">{project.name}</h2>
@@ -99,12 +102,15 @@ export default function Projects() {
 
                 {/* Image with hint to scroll down */}
                 <div className="relative">
-                  <img
-                    src={projects.find((p) => p.id === expandedProject)?.image}
-                    alt="Expanded"
-                    className="w-full aspect-[4/3] object-cover"
-                    style={{ maxHeight: '70vh' }}
-                  />
+                  <div className="relative w-full aspect-[4/3] max-h-[70vh]">
+                    <Image
+                      src={projects.find((p) => p.id === expandedProject)?.image || ""}
+                      alt="Expanded"
+                      fill
+                      className="object-cover rounded-t-lg"
+                      sizes="(max-width: 1024px) 100vw, 800px"
+                    />
+                  </div>
                   {/* Scroll hint arrow */}
                   <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
                     <svg
