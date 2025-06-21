@@ -5,7 +5,6 @@ import Image from "next/image";
 
 export default function Projects() {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
-
   const projects = [
     {
       id: 1,
