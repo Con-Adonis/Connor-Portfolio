@@ -80,7 +80,7 @@ export default function Home() {
               A little bit about me!
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Hi, my name is Connor! I'm a computer science student with a passion for machine learning, full-stack development, and building real tools that help people.
+              Hi, I'm Connor! I'm a computer science student with a passion for machine learning, full-stack development, and building real tools that help people.
               I've developed AI-powered tools like SnapLang and participated in hackathons and tech clubs at the New York City College of Technology in Brooklyn, New York.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">

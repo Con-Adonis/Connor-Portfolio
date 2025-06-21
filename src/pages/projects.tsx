@@ -8,27 +8,27 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      name: "SnapLang",
+      name: "SnapLang - In Development",
       image: "/snaplang.png",
-      description: "An AI-powered flashcard builder using real-world objects.",
+      description: "An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.\n\nThese translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.\n\nThis project is currently in development.",
     },
     {
       id: 2,
-      name: "SnapLang",
-      image: "/snaplang.png",
-      description: "An AI-powered flashcard builder using real-world objects.",
+      name: "CUNY Compass Chatbot - IBM Hackathon",
+      image: "/watsonx.jpeg",
+      description: "Built during the IBM Watsonx hackathon, CUNY Compass is an AI chatbot designed to assist students in the City University of New York system. It helps users explore schools, majors, programs, and classes, and answers questions about financial aid, tuition, admissions, and best practices for affordable education.\n\nI led the project’s ideation and focused on building the school and curriculum assistant module. By training Watsonx on curated datasets; including course catalogs, admissions brochures, major spreadsheets, and FAQ content, we ensured the chatbot returned clean, relevant answers. It uses a prompt-augmented retrieval system and live web search capabilities to provide up-to-date, student-focused guidance.\n\nThe chatbot streamlines decision-making for both prospective and current students navigating the complexity of higher education.",
     },
     {
       id: 3,
-      name: "SnapLang",
-      image: "/snaplang.png",
-      description: "An AI-powered flashcard builder using real-world objects.",
+      name: "NYC Violation Parser - Datathon Winner",
+      image: "/nycviolations.png",
+      description: "Created for City Tech’s first datathon, this project is a web-based data tool that identifies the most common and costly business violations across New York City. The goal: help business owners stay compliant and avoid preventable fines.\n\nOur team cleaned and analyzed over 20 million violation records using Python, Pandas, and Matplotlib. I led the identification of fines that were both frequent and easily avoidable. We ranked violations by frequency and cost, and organized results by NYC borough for location-specific insights.\n\nThis project earned third place overall in the competition.",
     },
     {
       id: 4,
-      name: "SnapLang",
-      image: "/snaplang.png",
-      description: "An AI-powered flashcard builder using real-world objects.",
+      name: "TeamTasker",
+      image: "/taskmanager.png",
+      description: "TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.\n\nBuilt for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.",
     },
   ];
 
@@ -85,28 +85,39 @@ export default function Projects() {
                     onClick={() => setExpandedProject(null)}
                     className="absolute left-4 hover:opacity-80 cursor-pointer"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 10l5-5m0 0v4.586a1 1 0 01-.293.707L15 10zm-6 4l-5 5m0 0v-4.586a1 1 0 01.293-.707L9 14z"
-                      />
+                    {/* Top-left arrow */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="-9 0 20 20" fill="currentColor">
+                      <path d="M3 7v-4a1 1 0 011-1h4a1 1 0 110 2H5v3a1 1 0 11-2 0z" />
+                    </svg>
+
+                    {/* Bottom-right arrow */}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform -rotate-180" viewBox="8 0 20 20" fill="currentColor">
+                      <path d="M17 13v4a1 1 0 01-1 1h-4a1 1 0 110-2h3v-3a1 1 0 112 0z" />
                     </svg>
                   </button>
                 </div>
 
-                <img
-                  src={projects.find((p) => p.id === expandedProject)?.image}
-                  alt="Expanded"
-                  className="w-full aspect-[4/3] object-cover"
-                />
+                {/* Image with hint to scroll down */}
+                <div className="relative">
+                  <img
+                    src={projects.find((p) => p.id === expandedProject)?.image}
+                    alt="Expanded"
+                    className="w-full aspect-[4/3] object-cover"
+                    style={{ maxHeight: '70vh' }}
+                  />
+                  {/* Scroll hint arrow */}
+                  <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-gray-700"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
 
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
@@ -114,23 +125,25 @@ export default function Projects() {
                   transition={{ duration: 0.3, delay: 0.15 }}
                   className="p-6 space-y-4 text-gray-800"
                 >
-                  <p className="text-md leading-relaxed">
+                  <p className="text-md leading-relaxed whitespace-pre-line">
                     {
                       projects.find((p) => p.id === expandedProject)?.description
                     }
                   </p>
-                  <a
-                    href={`/projects/$
-                      {
-                        projects.find((p) => p.id === expandedProject)?.name
-                          .toLowerCase()
-                          .replace(/\s+/g, "-")
-                      }
-                    `}
-                    className="text-blue-600 underline"
-                  >
-                    View full project details →
-                  </a>
+                  <div className="flex justify-center">
+                    <a
+                      href={`/projects/$
+                        {
+                          projects.find((p) => p.id === expandedProject)?.name
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")
+                        }
+                      `}
+                      className="text-blue-600 underline"
+                    >
+                      View full project details (coming soon) →
+                    </a>
+                  </div>
                 </motion.div>
               </motion.div>
             </motion.div>
