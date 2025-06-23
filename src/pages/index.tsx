@@ -18,7 +18,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 pt-4 max-w-2xl">
               {/* Resume */}
               <a
-                href="/resume.pdf"
+                href="/Connor_Kavleski_Resume.pdf"
                 download
                 className="px-3 py-1 bg-white text-black border border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
               >
