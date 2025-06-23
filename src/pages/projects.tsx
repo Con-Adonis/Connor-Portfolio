@@ -88,12 +88,12 @@ export default function Projects() {
                     className="absolute left-4 hover:opacity-80 cursor-pointer"
                   >
                     {/* Top-left arrow */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="-9 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="-8 1 20 20" fill="currentColor">
                       <path d="M3 7v-4a1 1 0 011-1h4a1 1 0 110 2H5v3a1 1 0 11-2 0z" />
                     </svg>
 
                     {/* Bottom-right arrow */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform -rotate-180" viewBox="8 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform -rotate-180" viewBox="8 -1 20 20" fill="currentColor">
                       <path d="M17 13v4a1 1 0 01-1 1h-4a1 1 0 110-2h3v-3a1 1 0 112 0z" />
                     </svg>
                   </button>

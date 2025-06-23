@@ -10,7 +10,7 @@ export default function Home() {
         <section className="min-h-[70vh] flex flex-col md:flex-row items-center justify-between gap-6 px-6 max-w-7xl mx-auto">
           {/* Left: Text Content */}
           <div className="flex-[1.2] text-left">
-            <h1 className="text-5xl text-gray-900 mb-6">Connor Kavleski</h1>
+            <h1 className="text-5xl text-gray-900 mb-6 pt-15 md:pt-0">Connor Kavleski</h1>
             <p className="text-gray-700 text-lg mb-6 max-w-xl leading-relaxed">
               Welcome to my portfolio!
             </p>
