@@ -93,7 +93,7 @@ export default function Projects() {
                 className="bg-white w-full max-w-5xl rounded-lg overflow-auto max-h-[80vh] shadow-2xl relative transition-all duration-500 ease-in-out scale-100"
                 style={{ transformOrigin: "center center" }}
               >
-                <div className="sticky top-0 w-full bg-gray-800 text-white px-6 py-3 flex justify-between items-center z-10">
+                <div className="sticky top-0 w-full bg-gray-800 text-white pl-6 py-3 flex justify-between items-center z-10">
                   <h2 className="text-xl font-semibold mx-auto px-6">
                     {projects.find((p) => p.id === expandedProject)?.name}
                   </h2>
