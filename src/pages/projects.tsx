@@ -125,7 +125,7 @@ export default function Projects() {
                     />
                   </div>
                   {/* Scroll hint arrow */}
-                  <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+                  <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-9 animate-bounce">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6 text-gray-700"
