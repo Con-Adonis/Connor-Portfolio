@@ -80,7 +80,7 @@ export default function Projects() {
                 style={{ transformOrigin: "center center" }}
               >
                 <div className="sticky top-0 w-full bg-gray-800 text-white px-6 py-3 flex justify-between items-center z-10">
-                  <h2 className="text-xl font-semibold mx-auto">
+                  <h2 className="text-xl font-semibold mx-auto px-6">
                     {projects.find((p) => p.id === expandedProject)?.name}
                   </h2>
                   <button
