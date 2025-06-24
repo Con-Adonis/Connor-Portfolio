@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import { useState } from "react";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -31,6 +32,19 @@ export default function Projects() {
       description: "TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.\n\nBuilt for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.",
     },
   ];
+
+  {/*Removing scroll ability when maximizing project */}
+  useEffect(() => {
+    if (expandedProject !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup
+    };
+  }, [expandedProject]);
 
   return (
     <>
