@@ -106,7 +106,7 @@ export default function Projects() {
                       src={projects.find((p) => p.id === expandedProject)?.image || ""}
                       alt="Expanded"
                       fill
-                      className="object-cover rounded-t-lg"
+                      className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 800px"
                     />
                   </div>
