@@ -27,6 +27,12 @@ export default function Projects() {
     },
     {
       id: 4,
+      name: "STIHL Web Scrapper",
+      image: "/stihlscraper.png",
+      description: "Created a Python-based web scraper that collected, parsed, and exported detailed product data from STIHL's online store. Extracted information includes product names, prices, technical specifications, and images URLs. Results were delivered in both CSV and JSON formats for flexible use."
+    },
+    {
+      id: 5,
       name: "TeamTasker",
       image: "/taskmanager.png",
       description: "TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.\n\nBuilt for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.",
