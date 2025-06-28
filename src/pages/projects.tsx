@@ -14,27 +14,27 @@ export default function Projects() {
       image: "/snaplangimg.png",
       description: `An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.
 
-These translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.
+      These translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.
 
-This project is currently in development.`,
+      This project is currently in development.`,
     },
     {
       name: "CUNY Compass Chatbot - IBM Hackathon",
       image: "/watsonx.jpeg",
       description: `Built during the IBM Watsonx hackathon, CUNY Compass is an AI chatbot designed to assist students in the City University of New York system. It helps users explore schools, majors, programs, and classes, and answers questions about financial aid, tuition, admissions, and best practices for affordable education.
 
-I led the project’s ideation and focused on building the school and curriculum assistant module. By training Watsonx on curated datasets; including course catalogs, admissions brochures, major spreadsheets, and FAQ content, we ensured the chatbot returned clean, relevant answers. It uses a prompt-augmented retrieval system and live web search capabilities to provide up-to-date, student-focused guidance.
+      I led the project’s ideation and focused on building the school and curriculum assistant module. By training Watsonx on curated datasets; including course catalogs, admissions brochures, major spreadsheets, and FAQ content, we ensured the chatbot returned clean, relevant answers. It uses a prompt-augmented retrieval system and live web search capabilities to provide up-to-date, student-focused guidance.
 
-The chatbot streamlines decision-making for both prospective and current students navigating the complexity of higher education.`,
+      The chatbot streamlines decision-making for both prospective and current students navigating the complexity of higher education.`,
     },
     {
       name: "NYC Violation Parser - Datathon Winner",
       image: "/nycviolations.png",
       description: `Created for City Tech’s first datathon, this project is a web-based data tool that identifies the most common and costly business violations across New York City. The goal: help business owners stay compliant and avoid preventable fines.
 
-Our team cleaned and analyzed over 20 million violation records using Python, Pandas, and Matplotlib. I led the identification of fines that were both frequent and easily avoidable. We ranked violations by frequency and cost, and organized results by NYC borough for location-specific insights.
+      Our team cleaned and analyzed over 20 million violation records using Python, Pandas, and Matplotlib. I led the identification of fines that were both frequent and easily avoidable. We ranked violations by frequency and cost, and organized results by NYC borough for location-specific insights.
 
-This project earned third place overall in the competition.`,
+      This project earned third place overall in the competition.`,
     },
     {
       name: "STIHL Web Scrapper",
@@ -46,7 +46,7 @@ This project earned third place overall in the competition.`,
       image: "/taskmanager.png",
       description: `TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.
 
-Built for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.`,
+      Built for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.`,
     },
   ];
 
