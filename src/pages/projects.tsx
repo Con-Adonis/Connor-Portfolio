@@ -5,66 +5,77 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
 export default function Projects() {
-  const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  // Change state to store the index of the expanded project
+  const [expandedProjectIndex, setExpandedProjectIndex] = useState<number | null>(null);
+
   const projects = [
     {
-      id: 1,
       name: "SnapLang - In Development",
       image: "/snaplangimg.png",
-      description: "An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.\n\nThese translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.\n\nThis project is currently in development.",
+      description: `An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.
+
+These translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.
+
+This project is currently in development.`,
     },
     {
-      id: 2,
       name: "CUNY Compass Chatbot - IBM Hackathon",
       image: "/watsonx.jpeg",
-      description: "Built during the IBM Watsonx hackathon, CUNY Compass is an AI chatbot designed to assist students in the City University of New York system. It helps users explore schools, majors, programs, and classes, and answers questions about financial aid, tuition, admissions, and best practices for affordable education.\n\nI led the project’s ideation and focused on building the school and curriculum assistant module. By training Watsonx on curated datasets; including course catalogs, admissions brochures, major spreadsheets, and FAQ content, we ensured the chatbot returned clean, relevant answers. It uses a prompt-augmented retrieval system and live web search capabilities to provide up-to-date, student-focused guidance.\n\nThe chatbot streamlines decision-making for both prospective and current students navigating the complexity of higher education.",
+      description: `Built during the IBM Watsonx hackathon, CUNY Compass is an AI chatbot designed to assist students in the City University of New York system. It helps users explore schools, majors, programs, and classes, and answers questions about financial aid, tuition, admissions, and best practices for affordable education.
+
+I led the project’s ideation and focused on building the school and curriculum assistant module. By training Watsonx on curated datasets; including course catalogs, admissions brochures, major spreadsheets, and FAQ content, we ensured the chatbot returned clean, relevant answers. It uses a prompt-augmented retrieval system and live web search capabilities to provide up-to-date, student-focused guidance.
+
+The chatbot streamlines decision-making for both prospective and current students navigating the complexity of higher education.`,
     },
     {
-      id: 3,
       name: "NYC Violation Parser - Datathon Winner",
       image: "/nycviolations.png",
-      description: "Created for City Tech’s first datathon, this project is a web-based data tool that identifies the most common and costly business violations across New York City. The goal: help business owners stay compliant and avoid preventable fines.\n\nOur team cleaned and analyzed over 20 million violation records using Python, Pandas, and Matplotlib. I led the identification of fines that were both frequent and easily avoidable. We ranked violations by frequency and cost, and organized results by NYC borough for location-specific insights.\n\nThis project earned third place overall in the competition.",
+      description: `Created for City Tech’s first datathon, this project is a web-based data tool that identifies the most common and costly business violations across New York City. The goal: help business owners stay compliant and avoid preventable fines.
+
+Our team cleaned and analyzed over 20 million violation records using Python, Pandas, and Matplotlib. I led the identification of fines that were both frequent and easily avoidable. We ranked violations by frequency and cost, and organized results by NYC borough for location-specific insights.
+
+This project earned third place overall in the competition.`,
     },
     {
-      id: 4,
       name: "STIHL Web Scrapper",
       image: "/stihlscraper.png",
-      description: "Created a Python-based web scraper that collected, parsed, and exported detailed product data from STIHL's online store. Extracted information includes product names, prices, technical specifications, and images URLs. Results were delivered in both CSV and JSON formats for flexible use."
+      description: "Created a Python-based web scraper that collected, parsed, and exported detailed product data from STIHL's online store. Extracted information includes product names, prices, technical specifications, and images URLs. Results were delivered in both CSV and JSON formats for flexible use.",
     },
     {
-      id: 5,
       name: "TeamTasker",
       image: "/taskmanager.png",
-      description: "TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.\n\nBuilt for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.",
+      description: `TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.
+
+Built for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.`,
     },
   ];
 
   {/*Removing scroll ability when maximizing project */}
   useEffect(() => {
-    if (expandedProject !== null) {
+    if (expandedProjectIndex !== null) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  
+
     return () => {
       document.body.style.overflow = "auto"; // cleanup
     };
-  }, [expandedProject]);
+  }, [expandedProjectIndex]);
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-white pt-20 px-4 sm:px-6 md:px-12">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-          {projects.map((project) => {
-            const isExpanded = expandedProject === project.id;
+          {projects.map((project, index) => { // Use index for mapping
+            const isExpanded = expandedProjectIndex === index; // Compare with index
             const visibilityClass = isExpanded ? "invisible" : "";
 
             return (
               <div
-                key={project.id}
-                onClick={() => setExpandedProject(project.id)}
+                key={project.name + index} // Use project name and index as key
+                onClick={() => setExpandedProjectIndex(index)} // Pass index to state
                 className={`relative bg-gray-100 rounded-lg overflow-hidden w-full h-full aspect-[4/3] max-w-sm shadow-lg group cursor-pointer transition hover:scale-105 hover:shadow-xl ${visibilityClass}`}
               >
                 <Image
@@ -83,7 +94,7 @@ export default function Projects() {
         </div>
 
         <AnimatePresence>
-          {expandedProject !== null && (
+          {expandedProjectIndex !== null && (
             <motion.div
               key="modal"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -91,7 +102,7 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.35, ease: "easeInOut" }}
               className="fixed inset-0 bg-black/30 flex justify-center items-start pt-28 px-4 z-40 backdrop-blur-sm"
-              onClick={() => setExpandedProject(null)}
+              onClick={() => setExpandedProjectIndex(null)} // Close modal by setting index to null
             >
               <motion.div
                 layout
@@ -101,19 +112,19 @@ export default function Projects() {
               >
                 <div className="sticky top-0 w-full bg-gray-800 text-white pl-6 py-3 flex justify-between items-center z-10">
                   <h2 className="text-xl font-semibold mx-auto px-6">
-                    {projects.find((p) => p.id === expandedProject)?.name}
+                    {projects[expandedProjectIndex]?.name} {/* Access project by index */}
                   </h2>
                   <button
-                    onClick={() => setExpandedProject(null)}
+                    onClick={() => setExpandedProjectIndex(null)} // Close modal
                     className="absolute left-4 hover:opacity-80 cursor-pointer"
                   >
                     {/* Top-left arrow */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform rotate-180" viewBox="-8 1 20 20" fill="currentColor">
+                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" className="h-5 w-5 transform rotate-180" viewBox="-8 1 20 20" fill="currentColor">
                       <path d="M3 7v-4a1 1 0 011-1h4a1 1 0 110 2H5v3a1 1 0 11-2 0z" />
                     </svg>
 
                     {/* Bottom-right arrow */}
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform -rotate-180" viewBox="8 -1 20 20" fill="currentColor">
+                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" className="h-5 w-5 transform -rotate-180" viewBox="8 -1 20 20" fill="currentColor">
                       <path d="M17 13v4a1 1 0 01-1 1h-4a1 1 0 110-2h3v-3a1 1 0 112 0z" />
                     </svg>
                   </button>
@@ -123,7 +134,7 @@ export default function Projects() {
                 <div className="relative">
                   <div className="relative w-full aspect-[4/3] max-h-[70vh]">
                     <Image
-                      src={projects.find((p) => p.id === expandedProject)?.image || ""}
+                      src={projects[expandedProjectIndex]?.image || ""} // Access image by index
                       alt="Expanded"
                       fill
                       className="object-cover"
@@ -133,7 +144,7 @@ export default function Projects() {
                   {/* Scroll hint arrow */}
                   <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-9 animate-bounce">
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
                       className="h-6 w-6 text-gray-700"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -152,14 +163,14 @@ export default function Projects() {
                 >
                   <p className="text-md leading-relaxed whitespace-pre-line">
                     {
-                      projects.find((p) => p.id === expandedProject)?.description
+                      projects[expandedProjectIndex]?.description // Access description by index
                     }
                   </p>
                   <div className="flex justify-center">
                     <a
                       href={`/projects/$
                         {
-                          projects.find((p) => p.id === expandedProject)?.name
+                          projects[expandedProjectIndex]?.name
                             .toLowerCase()
                             .replace(/\s+/g, "-")
                         }
