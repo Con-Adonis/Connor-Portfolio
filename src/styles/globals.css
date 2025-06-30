@@ -35,7 +35,7 @@ body {
 
 .animate-carousel{
   display: flex;
-  animation: scroll 30s linear infinite;
+  animation: scroll 20s linear infinite;
 }
 
 .animate-carousel:hover{

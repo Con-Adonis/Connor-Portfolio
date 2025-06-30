@@ -39,7 +39,7 @@ export default function Blog() {
     return sortedPosts.filter((post) => post.tags.includes(selectedTag));
   }, [selectedTag, sortedPosts]);
 
-  const truncate = (text: string, maxWords = 8) => {
+  const truncate = (text: string, maxWords = 5) => {
     const words = text.split(" ");
     return words.length <= maxWords
       ? text
@@ -60,10 +60,10 @@ export default function Blog() {
             Featured Posts
           </h2>
           <div className="overflow-hidden relative">
-            <div className="whitespace-nowrap animate-carousel">
+            <div className="animate-carousel">
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
-                <div key={i} className="inline-block mx-4 min-w-[40vw] max-w-[40vw]">
-                  <div className="relative aspect-[4/3]">
+                <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer">
+                  <div className="relative aspect-[4/3] w-40vw w-70 lg:w-100">
                     <Image
                       src={post.image}
                       alt={post.title}
@@ -72,9 +72,9 @@ export default function Blog() {
                     />
                   </div>
                   {/* Title and Summary */}
-                  <div className="p-4">
-                    <h3 className="text-base font-semibold text-gray-900 mb-1">{post.title}</h3>
-                    <p className="text-sm text-gray-600">{truncate(post.summary)}</p>
+                  <div className="py-4 pl-4">
+                    <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-1">{post.title}</h3>
+                    <p className="text-md text-gray-600">{truncate(post.summary)}</p>
                   </div>
                 </div>
               ))}
