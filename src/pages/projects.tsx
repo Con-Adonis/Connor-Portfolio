@@ -67,7 +67,7 @@ export default function Projects() {
     <>
       <Navbar />
       <main className="min-h-screen bg-white pt-20 px-4 sm:px-6 md:px-12">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center pt-4">
           {projects.map((project, index) => { // Use index for mapping
             const isExpanded = expandedProjectIndex === index; // Compare with index
             const visibilityClass = isExpanded ? "invisible" : "";
