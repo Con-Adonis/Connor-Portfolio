@@ -23,3 +23,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes scroll{
+  0%{
+    transform: translateX(0%);
+  }
+  100%{
+    transform: translateX(-50%)
+  }
+}
+
+.animate-carousel{
+  animation: scroll 30s linear infinite;
+}
+
+.animate-carousel:hover{
+  animation-play-state: paused;
+}

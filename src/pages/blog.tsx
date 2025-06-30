@@ -1,26 +1,31 @@
+"use client";
 import Navbar from "@/components/navbar";
 import Image from "next/image";
-import { blogPosts, BlogPost } from "@/data/blogPost";
-import { useState, useMemo, useRef, useEffect } from "react";
-import { motion, useAnimation, PanInfo } from "framer-motion";
+import { blogPosts } from "@/data/blogPost";
+import { useEffect, useRef, useState, useMemo } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { div } from "framer-motion/client";
 
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const carouselControls = useAnimation();
+
   const carouselRef = useRef<HTMLDivElement>(null);
-  const carouselX = useRef(0);
-  const [carouselWidth, setCarouselWidth] = useState(0);
-  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const controls = useAnimation();
+  const [isPaused, setIsPaused] = useState(false);
+  const lastScroll = useRef<number | null>(null);
 
-  const truncateSummary = (text: string, maxWords: number = 20) => {
-    const words = text.split(/\s+/);
-    return words.length <= maxWords ? text : words.slice(0, maxWords).join(" ") + "...";
-  };
+  // Filtered + Featured Posts
+  const sortedPosts = useMemo(
+    () =>
+      [...blogPosts].sort(
+        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+      ),
+    []
+  );
 
-  const sortedPosts = useMemo(() => [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()), []);
   const featuredPosts = useMemo(() => {
-    const original = sortedPosts.filter((post) => post.featured);
-    return original.length === 0 ? [] : Array(3).fill(original).flat();
+    const posts = sortedPosts.filter((post) => post.featured);
+    return [...posts, ...posts, ...posts]; // tripled for looping effect
   }, [sortedPosts]);
 
   const allTags = useMemo(() => {
@@ -32,115 +37,106 @@ export default function Blog() {
   const filteredPosts = useMemo(() => {
     if (!selectedTag || selectedTag === "All") return sortedPosts;
     return sortedPosts.filter((post) => post.tags.includes(selectedTag));
-  }, [sortedPosts, selectedTag]);
+  }, [selectedTag, sortedPosts]);
 
+  const truncate = (text: string, maxWords = 20) => {
+    const words = text.split(" ");
+    return words.length <= maxWords
+      ? text
+      : words.slice(0, maxWords).join(" ") + "...";
+  };
+
+  // Autoplay Logic
   useEffect(() => {
-    const calculateWidth = () => {
-      if (carouselRef.current) {
-        const children = Array.from(carouselRef.current.children);
-        const total = children.reduce((acc, c) => acc + c.clientWidth + 24, 0);
-        setCarouselWidth(total);
+    let frame: number;
+
+    const scrollLoop = () => {
+      if (!carouselRef.current || isPaused) return;
+
+      carouselRef.current.scrollLeft += 1;
+      if (
+        carouselRef.current.scrollLeft >=
+        carouselRef.current.scrollWidth - carouselRef.current.clientWidth
+      ) {
+        carouselRef.current.scrollLeft = 0;
       }
+      frame = requestAnimationFrame(scrollLoop);
     };
-    calculateWidth();
-    window.addEventListener("resize", calculateWidth);
-    return () => window.removeEventListener("resize", calculateWidth);
-  }, [featuredPosts]);
 
-  const startAutoplay = () => {
-    stopAutoplay();
-    autoplayTimeoutRef.current = setTimeout(() => {
-      if (!carouselRef.current) return;
-      const itemW = carouselRef.current.children[0]?.clientWidth + 24 || 300;
-      const originalW = (featuredPosts.length / 3) * itemW;
-      carouselX.current -= itemW;
-      carouselControls.start({ x: carouselX.current, transition: { duration: 1 } }).then(() => {
-        if (Math.abs(carouselX.current) >= originalW) {
-          carouselX.current = 0;
-          carouselControls.set({ x: 0 });
-        }
-        startAutoplay();
-      });
-    }, 3500);
-  };
+    frame = requestAnimationFrame(scrollLoop);
 
-  const stopAutoplay = () => {
-    if (autoplayTimeoutRef.current) clearTimeout(autoplayTimeoutRef.current);
-    autoplayTimeoutRef.current = null;
-  };
+    return () => cancelAnimationFrame(frame);
+  }, [isPaused]);
 
+  // Pause if user scrolls manually
   useEffect(() => {
-    if (featuredPosts.length) {
-      carouselControls.set({ x: 0 });
-      startAutoplay();
-    }
-    return () => stopAutoplay();
-  }, [featuredPosts]);
+    const ref = carouselRef.current;
+    if (!ref) return;
 
-  const handleDragEnd = (_: any, info: PanInfo) => {
-    const itemW = carouselRef.current?.children[0]?.clientWidth + 24 || 300;
-    const currentX = carouselX.current + info.offset.x;
-    carouselX.current = currentX;
-    const nearest = Math.round(Math.abs(currentX) / itemW);
-    const snapX = -nearest * itemW;
-    const maxDrag = -(carouselWidth - (carouselRef.current?.clientWidth || 0));
-    const finalX = Math.max(maxDrag, Math.min(0, snapX));
-    carouselControls.start({ x: finalX });
-    carouselX.current = finalX;
-    stopAutoplay();
-    startAutoplay();
-  };
+    const handleScroll = () => {
+      setIsPaused(true);
+      lastScroll.current = Date.now();
+    };
+
+    ref.addEventListener("scroll", handleScroll);
+
+    const resume = setInterval(() => {
+      if (
+        isPaused &&
+        lastScroll.current &&
+        Date.now() - lastScroll.current > 3000
+      ) {
+        setIsPaused(false);
+      }
+    }, 1000);
+
+    return () => {
+      ref.removeEventListener("scroll", handleScroll);
+      clearInterval(resume);
+    };
+  }, [isPaused]);
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white pt-20 px-4 sm:px-6 md:px-12 pb-10">
-        <h1 className="text-5xl text-gray-900 mb-8 text-center pt-8">My Blog</h1>
+      <main className="min-h-screen bg-white pt-24 pb-20">
+        <h1 className="text-5xl font-bold text-center mb-12 text-gray-900">
+          My Blog
+        </h1>
 
-        {/* Carousel */}
-        <section className="mb-14">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Featured Posts</h2>
-          <motion.div
-            className="overflow-hidden"
-            ref={carouselRef}
-            drag="x"
-            dragConstraints={{ left: -carouselWidth, right: 0 }}
-            onDragEnd={handleDragEnd}
-            animate={carouselControls}
-          >
-            <div className="flex gap-6 px-4">
-              {featuredPosts.map((post) => (
-                <div key={post.slug} className="min-w-[260px] sm:min-w-[300px] md:min-w-[340px] max-w-[90vw] bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
-                  <div className="relative aspect-[4/3] w-full">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray-800 truncate">{post.title}</h3>
-                    <p className="text-sm text-gray-600 mt-2">{truncateSummary(post.summary)}</p>
-                  </div>
+        {/* Featured Carousel */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
+            Featured Posts
+          </h2>
+          <div className="overflow-hidden relative">
+            <div className="whitespace-nowrap animate-carousel">
+              {[...featuredPosts, ...featuredPosts].map((post, i) => (
+                <div key={i} className="inline-block w-[30vm] mx-4">
+                  bruh
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* Filter Tags */}
-        <section className="mb-10 text-center">
-          <div className="flex overflow-x-auto gap-3 px-2 pb-3 sm:justify-center">
+        {/* Tag Filter */}
+        <section className="mb-16 text-center px-6">
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">
+            Filter by Tags
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
             {allTags.map((tag) => (
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`whitespace-nowrap px-4 py-2 rounded-full border-2 border-black text-sm transition duration-300 ease-in-out hover:scale-105 hover:shadow-md
-                  ${selectedTag === tag || (!selectedTag && tag === "All")
+                className={`px-4 py-2 rounded-full border-2 border-black transition
+                duration-300 ease-in-out cursor-pointer
+                ${
+                  selectedTag === tag || (!selectedTag && tag === "All")
                     ? "bg-black text-white"
-                    : "bg-white text-black"}`}
+                    : "bg-white text-black hover:bg-gray-100"
+                }`}
               >
                 {tag}
               </button>
@@ -148,45 +144,35 @@ export default function Blog() {
           </div>
         </section>
 
-        {/* Masonry Blog Grid */}
+        {/* All Blog Posts */}
         <section>
-          <div className="max-w-screen-xl mx-auto grid auto-rows-min" style={{ columnCount: 1, columnGap: '1.5rem' }}>
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((post) => (
-                <div
-                  key={post.slug}
-                  className="relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl mb-8 transition-all break-inside-avoid-column group"
-                >
-                  <div className="absolute top-2 left-2 z-10 bg-white/80 px-3 py-1 text-sm font-medium text-gray-800 rounded-md">
-                    {post.title}
-                  </div>
-
-                  <div className="relative w-full aspect-[4/3]">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </div>
-
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-full bg-black/70 text-white px-4 py-3 pointer-events-none flex items-center justify-center text-center overflow-hidden"
-                    initial={{ y: "100%", opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <p className="text-sm">{truncateSummary(post.summary)}</p>
-                  </motion.div>
+          <h2 className="text-3xl font-semibold text-center mb-8 text-gray-800">
+            All Posts
+          </h2>
+          <div className="max-w-screen-xl mx-auto grid auto-rows-min gap-8" style={{ columnCount: '1', columnGap: '2rem' }}>
+            {filteredPosts.map((post) => (
+              <div
+                key={post.slug}
+                className="bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300 mb-8 break-inside-avoid-column max-w-[30vw]"
+              >
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              ))
-            ) : (
-              <p className="text-gray-600 text-lg col-span-full">No posts found for the selected tags.</p>
-            )}
+                <div className="p-4">
+                  <h3 className="text-md font-semibold text-gray-900 mb-2 truncate">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-gray-800">{truncate(post.summary)}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Column responsiveness */}
           <style jsx>{`
             .grid {
               display: block;
@@ -212,3 +198,5 @@ export default function Blog() {
     </>
   );
 }
+
+
