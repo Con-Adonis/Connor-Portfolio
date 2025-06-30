@@ -34,9 +34,10 @@ body {
 }
 
 .animate-carousel{
+  display: flex;
   animation: scroll 30s linear infinite;
 }
 
 .animate-carousel:hover{
-  animation-play-state: paused;
+  animation-play-state: pause;
 }

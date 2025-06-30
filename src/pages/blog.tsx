@@ -39,62 +39,12 @@ export default function Blog() {
     return sortedPosts.filter((post) => post.tags.includes(selectedTag));
   }, [selectedTag, sortedPosts]);
 
-  const truncate = (text: string, maxWords = 20) => {
+  const truncate = (text: string, maxWords = 8) => {
     const words = text.split(" ");
     return words.length <= maxWords
       ? text
       : words.slice(0, maxWords).join(" ") + "...";
   };
-
-  // Autoplay Logic
-  useEffect(() => {
-    let frame: number;
-
-    const scrollLoop = () => {
-      if (!carouselRef.current || isPaused) return;
-
-      carouselRef.current.scrollLeft += 1;
-      if (
-        carouselRef.current.scrollLeft >=
-        carouselRef.current.scrollWidth - carouselRef.current.clientWidth
-      ) {
-        carouselRef.current.scrollLeft = 0;
-      }
-      frame = requestAnimationFrame(scrollLoop);
-    };
-
-    frame = requestAnimationFrame(scrollLoop);
-
-    return () => cancelAnimationFrame(frame);
-  }, [isPaused]);
-
-  // Pause if user scrolls manually
-  useEffect(() => {
-    const ref = carouselRef.current;
-    if (!ref) return;
-
-    const handleScroll = () => {
-      setIsPaused(true);
-      lastScroll.current = Date.now();
-    };
-
-    ref.addEventListener("scroll", handleScroll);
-
-    const resume = setInterval(() => {
-      if (
-        isPaused &&
-        lastScroll.current &&
-        Date.now() - lastScroll.current > 3000
-      ) {
-        setIsPaused(false);
-      }
-    }, 1000);
-
-    return () => {
-      ref.removeEventListener("scroll", handleScroll);
-      clearInterval(resume);
-    };
-  }, [isPaused]);
 
   return (
     <>
@@ -112,8 +62,20 @@ export default function Blog() {
           <div className="overflow-hidden relative">
             <div className="whitespace-nowrap animate-carousel">
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
-                <div key={i} className="inline-block w-[30vm] mx-4">
-                  bruh
+                <div key={i} className="inline-block mx-4 min-w-[40vw] max-w-[40vw]">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  {/* Title and Summary */}
+                  <div className="p-4">
+                    <h3 className="text-base font-semibold text-gray-900 mb-1">{post.title}</h3>
+                    <p className="text-sm text-gray-600">{truncate(post.summary)}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -172,27 +134,6 @@ export default function Blog() {
               </div>
             ))}
           </div>
-
-          <style jsx>{`
-            .grid {
-              display: block;
-            }
-            @media (min-width: 640px) {
-              .grid {
-                column-count: 2;
-              }
-            }
-            @media (min-width: 1024px) {
-              .grid {
-                column-count: 3;
-              }
-            }
-            @media (min-width: 1280px) {
-              .grid {
-                column-count: 4;
-              }
-            }
-          `}</style>
         </section>
       </main>
     </>

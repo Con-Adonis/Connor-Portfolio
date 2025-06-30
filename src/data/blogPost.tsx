@@ -113,7 +113,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog/data-science.png",
     date: "2025-06-20",
     tags: ["Data Science", "Machine Learning", "Career"],
-    featured: false,
+    featured: true,
     summary: "A personal account of my transition and learning experience in the exciting field of data science, from initial curiosity to hands-on projects and continuous learning.",
     content: `
     ## Embarking on the Data Science Path
