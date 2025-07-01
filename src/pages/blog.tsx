@@ -3,16 +3,13 @@ import Navbar from "@/components/navbar";
 import Image from "next/image";
 import { blogPosts } from "@/data/blogPost";
 import { useEffect, useRef, useState, useMemo } from "react";
-import { motion, useAnimation } from "framer-motion";
-import { div } from "framer-motion/client";
+import { motion, time, useAnimation } from "framer-motion";
 
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-
   const carouselRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimation();
+  const [carouselX, setCarouselX] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const lastScroll = useRef<number | null>(null);
 
   // Filtered + Featured Posts
   const sortedPosts = useMemo(
@@ -25,8 +22,15 @@ export default function Blog() {
 
   const featuredPosts = useMemo(() => {
     const posts = sortedPosts.filter((post) => post.featured);
-    return [...posts, ...posts, ...posts]; // tripled for looping effect
+    return [...posts, ...posts]; // tripled for looping effect
   }, [sortedPosts]);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const width = carouselRef.current.scrollWidth / 3;
+      setCarouselX(width);
+    }
+  }, [featuredPosts]);
 
   const allTags = useMemo(() => {
     const tags = new Set<string>();
@@ -60,7 +64,12 @@ export default function Blog() {
             Featured Posts
           </h2>
           <div className="overflow-hidden relative">
-            <div className="animate-carousel">
+            <motion.div
+              animate={{ x: [0, -carouselX] }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="flex gap-6"
+              ref={carouselRef}
+            >
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
                 <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer">
                   <div className="relative aspect-[4/3] w-40vw w-70 lg:w-100">
@@ -72,13 +81,13 @@ export default function Blog() {
                     />
                   </div>
                   {/* Title and Summary */}
-                  <div className="py-4 pl-4">
+                  <div className="py-4 pl-4 bg-gray-100 bg-gray-100/75 backdrop-blur-sm">
                     <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-1">{post.title}</h3>
                     <p className="text-md text-gray-600">{truncate(post.summary)}</p>
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 

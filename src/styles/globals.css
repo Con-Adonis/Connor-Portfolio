@@ -26,16 +26,16 @@ body {
 
 @keyframes scroll{
   0%{
-    transform: translateX(0%);
+    transform: translateX(-50%);
   }
   100%{
-    transform: translateX(-50%)
+    transform: translateX(-146.75%)
   }
 }
 
 .animate-carousel{
   display: flex;
-  animation: scroll 20s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 
 .animate-carousel:hover{
