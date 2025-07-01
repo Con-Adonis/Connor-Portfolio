@@ -10,6 +10,10 @@ export default function Blog() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [carouselX, setCarouselX] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const startAutoplay = () => {};
+  const stopAutoplay = () => {};
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const carouselControls = useAnimation();
 
   // Filtered + Featured Posts
   const sortedPosts = useMemo(
@@ -26,10 +30,30 @@ export default function Blog() {
   }, [sortedPosts]);
 
   useEffect(() => {
-    if (carouselRef.current) {
-      const width = carouselRef.current.scrollWidth / 3;
-      setCarouselX(width);
+    if (!carouselRef.current) return;
+
+    const container = carouselRef.current;
+    const totalWidth = carouselRef.current.scrollWidth / 2; // Because we duplicated posts
+
+    const loop = async () => {
+      await carouselControls.start({
+        x: -totalWidth,
+        transition: {
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+        },
+      })
     }
+
+    const runLoop = async () => {
+      while(true){
+        await loop();
+      }
+    }
+
+    setCarouselWidth(totalWidth);
+    runLoop();
   }, [featuredPosts]);
 
   const allTags = useMemo(() => {
@@ -63,12 +87,12 @@ export default function Blog() {
           <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
             Featured Posts
           </h2>
-          <div className="overflow-hidden relative">
+
+          <div className="overflow-hidden w-full relative">
             <motion.div
-              animate={{ x: [0, -carouselX] }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="flex gap-6"
-              ref={carouselRef}
+              ref = {carouselRef}
+              animate = {carouselControls}
+              className="flex w-max gap-g px-4 will-change-transform smooth-carousel"
             >
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
                 <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer">

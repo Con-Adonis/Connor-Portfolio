@@ -24,13 +24,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@keyframes scroll{
-  0%{
-    transform: translateX(-50%);
-  }
-  100%{
-    transform: translateX(-146.75%)
-  }
+.smooth-carousel {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .animate-carousel{
