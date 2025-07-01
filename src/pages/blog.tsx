@@ -116,16 +116,16 @@ export default function Blog() {
         </section>
 
         {/* Tag Filter */}
-        <section className="mb-16 text-center px-6">
+        <section className="mb-16 text-center">
           <h2 className="text-3xl font-semibold mb-6 text-gray-800">
             Filter by Tags
           </h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex px-2 pb-4 text-xs md:text-base overflow-scroll md:flex-wrap justify-left md:justify-center gap-3">
             {allTags.map((tag) => (
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`px-4 py-2 rounded-full border-2 border-black transition
+                className={`px-3 sm:grid-rows-2 sm:overflow-jusitify md:px-4 md:py-2 rounded-full border-2 border-black transition
                 duration-300 ease-in-out cursor-pointer
                 ${
                   selectedTag === tag || (!selectedTag && tag === "All")
