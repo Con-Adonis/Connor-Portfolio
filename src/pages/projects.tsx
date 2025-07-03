@@ -163,7 +163,7 @@ export default function Projects() {
                 >
                   <p className="text-md leading-relaxed whitespace-pre-line">
                     {
-                      projects[expandedProjectIndex]?.description // Access description by index
+                      projects[expandedProjectIndex]?.description
                     }
                   </p>
                   <div className="flex justify-center">

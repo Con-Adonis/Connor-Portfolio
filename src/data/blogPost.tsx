@@ -13,7 +13,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "getting-started-with-nextjs",
     title: "Getting Started with Next.js",
-    image: "/blog/nextjs-intro.png", // Example image path, create a /public/blog folder
+    image: "/snaplangimg.png", // Example image path, create a /public/blog folder
     date: "2025-06-27",
     tags: ["Next.js", "Web Development", "Tutorial"],
     featured: true,

@@ -95,7 +95,7 @@ export default function Blog() {
               className="flex w-max gap-g px-4 will-change-transform smooth-carousel"
             >
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
-                <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer">
+                <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer overflow-hidden">
                   <div className="relative aspect-[4/3] w-40vw w-70 lg:w-100">
                     <Image
                       src={post.image}
@@ -125,7 +125,7 @@ export default function Blog() {
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
-                className={`px-3 sm:grid-rows-2 sm:overflow-jusitify md:px-4 md:py-2 rounded-full border-2 border-black transition
+                className={`px-3 sm:overflow-jusitify md:px-4 md:py-2 rounded-full border-2 border-black transition
                 duration-300 ease-in-out cursor-pointer
                 ${
                   selectedTag === tag || (!selectedTag && tag === "All")
@@ -144,11 +144,11 @@ export default function Blog() {
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-800">
             All Posts
           </h2>
-          <div className="max-w-screen-xl mx-auto grid auto-rows-min gap-8" style={{ columnCount: '1', columnGap: '2rem' }}>
+          <div className="mx-[5%] grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center cursor-pointer">
             {filteredPosts.map((post) => (
               <div
                 key={post.slug}
-                className="bg-gray-100 rounded-lg shadow-md hover:shadow-xl transition duration-300 mb-8 break-inside-avoid-column max-w-[30vw]"
+                className="relative bg-gray-200 overflow-hidden rounded-lg shadow-md w-full h-full hover:shadow-xl transition duration-300 mb-8 transition: hover:scale-105 hover:shadow-xl"
               >
                 <div className="relative aspect-[4/3]">
                   <Image
@@ -158,11 +158,14 @@ export default function Blog() {
                     className="object-cover"
                   />
                 </div>
-                <div className="p-4">
-                  <h3 className="text-md font-semibold text-gray-900 mb-2 truncate">
+                <div className="px-2 py-1 bg-white">
+                  <h3 className="text-md font-semibold text-gray-900 flex">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-gray-800">{truncate(post.summary)}</p>
+                  <h4 className="text-gray-900">
+                    {post.date}
+                  </h4>
+                  <p className="text-sm text-gray-800 truncate flex justify-bottom">{post.summary}</p>
                 </div>
               </div>
             ))}
