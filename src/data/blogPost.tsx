@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     title: "Uploading my blog!",
     image: "/blogposts/blogss.png", // Example image path, create a /public/blog folder
     date: "2025-7-2",
-    tags: ["Next.js", "Web Development", "Typescript"],
+    tags: ["Web Development"],
     featured: true,
     summary: "My blog is finally up! Getting this set up was a huge learning experience!",
     content: `
