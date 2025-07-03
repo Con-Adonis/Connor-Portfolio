@@ -4,6 +4,7 @@ import Image from "next/image";
 import { blogPosts } from "@/data/blogPost";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, time, useAnimation } from "framer-motion";
+import Link from "next/link";
 
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -95,21 +96,27 @@ export default function Blog() {
               className="flex w-max gap-g px-4 will-change-transform smooth-carousel"
             >
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
-                <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer overflow-hidden">
-                  <div className="relative aspect-[4/3] w-70 lg:w-100">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover"
-                    />
+                <Link
+                key = {post.slug}
+                href={`/${post.slug}`}
+                className="block"
+                >
+                  <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer overflow-hidden">
+                    <div className="relative aspect-[4/3] w-70 lg:w-100">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    {/* Title and Summary */}
+                    <div className="py-4 pl-4 bg-gray-100 bg-gray-100/75 backdrop-blur-sm">
+                      <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-1">{post.title}</h3>
+                      <p className="text-md text-gray-600">{truncate(post.summary)}</p>
+                    </div>
                   </div>
-                  {/* Title and Summary */}
-                  <div className="py-4 pl-4 bg-gray-100 bg-gray-100/75 backdrop-blur-sm">
-                    <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-1">{post.title}</h3>
-                    <p className="text-md text-gray-600">{truncate(post.summary)}</p>
-                  </div>
-                </div>
+                </Link>
               ))}
             </motion.div>
           </div>
@@ -144,30 +151,32 @@ export default function Blog() {
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-800">
             All Posts
           </h2>
-          <div className="mx-[5%] grid grid-cols-1 md:grid-cols-4 gap-8 justify-items-center cursor-pointer">
+
+          <div className="max-w-screen-xl mx-[5%] px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {filteredPosts.map((post) => (
-              <div
+              <Link
                 key={post.slug}
-                className="relative bg-gray-200 overflow-hidden rounded-lg shadow-md w-full h-full hover:shadow-xl transition duration-300 transition: hover:scale-105 hover:shadow-xl"
+                href={`/${post.slug}`}
+                className="block"
               >
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="relative bg-gray-200 overflow-hidden rounded-lg shadow-md hover:shadow-xl transition duration-300 hover:scale-105">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="px-2 py-1">
+                    <h3 className="text-md font-semibold text-gray-900">
+                      {post.title}
+                    </h3>
+                    <h4 className="text-gray-900">{post.date}</h4>
+                    <p className="text-sm text-gray-800 truncate">{post.summary}</p>
+                  </div>
                 </div>
-                <div className="px-2 py-1">
-                  <h3 className="text-md font-semibold text-gray-900 flex">
-                    {post.title}
-                  </h3>
-                  <h4 className="text-gray-900">
-                    {post.date}
-                  </h4>
-                  <p className="text-sm text-gray-800 truncate flex justify-bottom">{post.summary}</p>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
