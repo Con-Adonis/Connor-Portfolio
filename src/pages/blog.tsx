@@ -96,7 +96,7 @@ export default function Blog() {
             >
               {[...featuredPosts, ...featuredPosts].map((post, i) => (
                 <div key={i} className="inline-block mx-8 shadow-lg mt-4 mb-10 rounded-lg transiton duration-500 hover:scale-105 hover:shadow-xl ease-in-out cursor-pointer overflow-hidden">
-                  <div className="relative aspect-[4/3] w-40vw w-70 lg:w-100">
+                  <div className="relative aspect-[4/3] w-70 lg:w-100">
                     <Image
                       src={post.image}
                       alt={post.title}
@@ -148,7 +148,7 @@ export default function Blog() {
             {filteredPosts.map((post) => (
               <div
                 key={post.slug}
-                className="relative bg-gray-200 overflow-hidden rounded-lg shadow-md w-full h-full hover:shadow-xl transition duration-300 mb-8 transition: hover:scale-105 hover:shadow-xl"
+                className="relative bg-gray-200 overflow-hidden rounded-lg shadow-md w-full h-full hover:shadow-xl transition duration-300 transition: hover:scale-105 hover:shadow-xl"
               >
                 <div className="relative aspect-[4/3]">
                   <Image
@@ -158,7 +158,7 @@ export default function Blog() {
                     className="object-cover"
                   />
                 </div>
-                <div className="px-2 py-1 bg-white">
+                <div className="px-2 py-1">
                   <h3 className="text-md font-semibold text-gray-900 flex">
                     {post.title}
                   </h3>
