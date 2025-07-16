@@ -16,7 +16,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blogposts/blogss.png",
     date: "2025-7-2",
     tags: ["Web Development"],
-    featured: true,
+    featured: false,
     summary: "My blog is finally up! Getting this set up was a huge learning experience!",
     content: `
     Welcome to my first blog post!
@@ -78,6 +78,24 @@ export const blogPosts: BlogPost[] = [
 
     Overall, the AWS Summit was an invaluable experience that I will never forget. Though there was a lot to learn, as this was a summit that focused on the latest and greatest in AI, I was still able to walk away with a greater understanding of the industry and the tools available to me. I am incredibly grateful for the opportunity to attend this event, and I look forward to applying what I learned in my future projects.
 
+    Connor
+    `,
+  },
+  {
+    slug: "geekspeaker-founding-engineer",
+    title: "GeekSpeaker Founding Engineer!",
+    image: "/blogposts/geekspeaker.png",
+    date: "2025-7-15",
+    tags: ["Web Development", "Career"],
+    featured: true,
+    summary: "I am very excited to announce that I have been onboarded to GeekSpeaker as a founding engineer!",
+    content: `
+    Today, I'm very excited to announce that I've been onboarded to GeekSpeaker as a founding engineer! This is a project I've already been investing a lot of time into, and I'm thrilled to now be a full-time member of the team!
+
+    I met the CEO and Founder, Golvis Tavarez, at the MLH Roadshow on June 27th, which I mentioned in a previous blog post. We got along very well, and he gave me his business card and shared his ideas with me. I believe the team he has assembled is smart and dedicated to helping people, which aligns perfectly with my core value in tech: to create solutions that genuinely benefit others.
+
+    GeekSpeaker is a platform that hosts a suite of software with the objective of serving its niche. I can't wait to share more details about the specifics of the projects and my contributions to them in the future! I highly recommend checking out their website at https://www.geekspeaker.com/. I believe their mission is a noble one, and I'm excited to be a part of it.
+    
     Connor
     `,
   },
