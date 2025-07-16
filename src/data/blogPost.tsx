@@ -38,12 +38,12 @@ export const blogPosts: BlogPost[] = [
     slug: "MLH-Roadshow",
     title: "Major League Hacking AI Roadshow!",
     image: "/blogposts/mlh7-2.jpeg",
-    date: "2025-7-2",
+    date: "2025-7-3",
     tags: ["AI", "MLH"],
     featured: true,
     summary: "I had a great time attending MLH's AI Roadshow on June 27th!",
     content: `
-    Last week I had the pleasure to see Major League Hacking's event in Chinatown, Manhattan last month for their nation wide AI Roadshow!
+      Last week I had the pleasure to see Major League Hacking's event in Chinatown, Manhattan last month for their nation wide AI Roadshow!
 
     Major League Hacking (MLH) is not the cybercriminal organization many would think of when first hearing the name, but rather an organization dedicated to student success through building projects in hackathons!
     Hackathons are events ranging from a couple hours to a handful of days in which students are involved in friendly competition to build a piece of software or solve a problem by using tech! I have attended three so far, and I can confirm they are incredibly fun learning experiences!
@@ -53,6 +53,30 @@ export const blogPosts: BlogPost[] = [
     To my suprise, I won a backpack from the event! It was really something to see how far AI generation has come in the past couple years!
 
     I'm looking forward to MLH's upcoming hackathons that I have applied to attend at some great universities!
+
+    Connor
+    `,
+  },
+  {
+    slug: "AWS-Summit",
+    title: "AWS Summit NYC 2025!",
+    image: "/blogposts/awsSummit25.jpeg",
+    date: "2025-7-16",
+    tags: ["AWS", "AI"],
+    featured: true,
+    summary: "I had the oppourtunity to attend the Amazon Web Services Summit in Manhattan NYC!",
+    content: `
+    Earlier today I had the oppourtunity to attend the Amazon Web Services (AWS) Summit in Manhattan NYC! It was an incredible experience that I will never forget.
+
+    The event was incredibly packed, with thousands of attendees from around the world all in the Javtis Center, and for good reason! Many top tech companies set up shop to showcase their latest and greatest technologies; including Meta, NVIDIA, Anthropic, and (of course) Amazon!
+
+    The main theme was obvious, agentic AI! I went from booth to booth looking at the latest AI technologies from Calude playing Pokémon Red, to NVIDIA's latest two-way conversational agent! I also collected tons of tech stickers, all of which are proudly displayed on my MacBook!
+
+    The whole summit was fantastic, but two events went far past my expectations!
+    Firstly, AWS revealed Amazon Bedrock AgentCore, which allows for the deployment and operation of AI agents at an incredible scale! This technology allows for the independent or connected release of agents using any framework both within and outside the suite of foundational models they offer. Another feature they made sure to emphasize was the use of Model Context Protocol (MCP) servers, which AWS claims "provides a standardized way for LLMs to connect to data sources and tools". This is an cutting-edge development, as it allows agents to more effectively interact with the external internet (browsing the web, updating calendars and event sheets, collaborating with other agents) while also giving said agents greater compatibility and context; a key feature in preventing hallucinations! This technology is a game changer for the industry and how the worlld interacts with AI! I have an exciting project in the works with a focus on agentic AI that I will make sure to detail more as it develops, but I can say in the mean time that this technology can be a great asset to it!
+    The second experience that blew me away was the AWS Skills Builder service, which is a free online learning platform that offers courses on AWS services and cloud computing. I was able to take a full course on making a custom entity recognition model! Using Amazon S3 and Bedrock, I trained the model to detect instances of any Amazon service or employee within any text file. This wasn't a simple keyword search, though; this model was trained on the context in which these terms were used, allowing it to flag instances even if it wasn't trained on those specific phrases! This is a fantastic service that I will absolutely use in the future as I continute my engineering journey.
+
+    Overall, the AWS Summit was an invaluable experience that I will never forget. Though there was a lot to learn, as this was a summit that focused on the latest and greatest in AI, I was still able to walk away with a greater understanding of the industry and the tools available to me. I am incredibly grateful for the opportunity to attend this event, and I look forward to applying what I learned in my future projects.
 
     Connor
     `,
