@@ -99,4 +99,25 @@ export const blogPosts: BlogPost[] = [
     Connor
     `,
   },
+  {
+    slug: "sga-senator-start",
+    title: "I'm now a Senator of Tech and Design for SGA!",
+    image: "/blogposts/SGA_Const.jpeg",
+    date: "2025-7-31",
+    tags: ["Student Experiences", "Career"],
+    featured: false,
+    summary: "Today I just got elected  within City Tech's SGA as a Senator of Technology and Design!",
+    content: `
+    Today I just got elected within City Tech's Student Government Association (SGA) as a Senator of Technology and Design!
+
+    This is a huge responsibility that I am honored to be taking on. As a Senator, I will be representing the interests of my fellow students in the Technology and Design department by advocating for their needs and concerns. I will also be working with the SGA to create a more inclusive and supportive environment for all students.
+    I am excited to be a part of this organization and to have the opportunity to make a difference in the lives of my fellow students. I believe that by working together, we can create a better future for all students at City Tech.
+
+    As a student in the tech industry, I am particularly passionate about giving students the oppourtunity to get hands on experience in the field that will impress employers. I plan to work with the SGA to create more opportunities for students to get involved in tech-related initiatives, such as hackathons, workshops, and internship programs. I also want to ensure that students have access to the resources they need to succeed in their studies, such as tutoring, mentoring, and career counseling. City Tech has many of these resources available already, but I want to enhance them to their greatest potential, and ensure that all students are aware and able to access them.
+    
+    I can't wait to share updated about the changes I will be making in the future! I hope to make a positive impact on the lives of my fellow students and to help them achieve their goals!
+
+    Connor
+    `,
+  },
 ];
