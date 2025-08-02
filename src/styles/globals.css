@@ -3,6 +3,7 @@
 :root {
   --background: black;
   --foreground: white;
+  overflow-x: hidden;
 }
 
 :root {
