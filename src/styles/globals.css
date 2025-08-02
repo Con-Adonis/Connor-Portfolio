@@ -23,3 +23,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.smooth-carousel {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.animate-carousel{
+  display: flex;
+  animation: scroll 10s linear infinite;
+}
+
+.animate-carousel:hover{
+  animation-play-state: pause;
+}
