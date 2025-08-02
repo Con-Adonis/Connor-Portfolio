@@ -50,15 +50,6 @@ export default function Home() {
               >
                 LinkedIn
               </a>
-
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/con.adonis/"
-                target="_blank"
-                className="px-3 py-1 bg-white text-black border border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
-              >
-                Instagram
-              </a>
             </div>
           </div>
 
