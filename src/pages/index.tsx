@@ -69,7 +69,7 @@ export default function Home() {
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
               Hi, I&apos;m Connor! I&apos;m a computer science student with a passion for machine learning, full-stack development, and building real tools that help people.
-              I&apos;ve developed AI-powered tools like SnapLang and participated in hackathons and tech clubs at the New York City College of Technology in Brooklyn, New York.
+              I&apos;ve developed AI-powered tools like SnapLang and participate in hackathons, tech clubs, and student government at the New York City College of Technology in Brooklyn, New York.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
               My journey began with a curiosity in the way computers can store, retrieve, and manipulate information. This curiosity combined with a desire to solve
