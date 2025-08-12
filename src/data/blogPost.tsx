@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "prj",
     title: "Lots of Projects!",
-    image: "/blogposts/newsanalysis.jpeg",
+    image: "/blogposts/proj.png",
     date: "2025-8-11",
     tags: ["ML", "Career"],
     featured: false,
