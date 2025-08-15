@@ -154,19 +154,15 @@ export const blogPosts: BlogPost[] = [
     featured: true,
     summary: "Summer classes are finished so now I get to work on lots of projects!",
     content: `
-    Summer classes finished recently, so that means I can dedicate my time to working on projects!
+    I'm super grateful to have attended Reddit's hackathon the other day where they showed their new game hosting platform, Devvit! It was super cool to learn about the platform and my game ReflexReaction even won second place!
 
-    I have a lot to juggle at the moment, but I'm excited to share what I've been working on. Here are some of the projects I'm currently involved in:
+    The platform is a new gaming push that the tech company is spearheading. All you have to do is build the game, and they take care of the backend and hosting for you! This is a great way to get started in game development. Though this isn't the route I am aiming for in the future, it was great to learn about new technologies being developed!
 
-    1. Silent Convo
-    Under the GeekSpeaker umbrella of software solutions, we are currently developing Silent Convo! This is a platform that encrypts phone calls end-to-end for fully anonymous group therapy sessions. It greatly aligns with my core value of using tech to help people, and I'm excited to be a part of it!
-
-    2. StockBot
-    This is a new development that has been making steady progress! It's an smart stock trading AI agent that has many more capabilities than your typical price predition model. My current focus has been on integrating real-time news analysis for a better understanding of the global market! By using a news scraper another teammate has built, I am able to feed news articles to a language model in order to see if a given stock is being mentioned about and in what context. As seen in the picture above, I was able to have a model identify the stocks that are being affcted in a sample article! Of course this is just the beginning, we still need sentiment analysis, and maybe even a reasoning model; but I'm very excited about the potential of this project!
-
-    3. Grow with Google Scholarship and IT Automation with Python certificate
-    I was recently accpeted by Google and Mentor Me Collective into their Grow with Google Scholarship program! This program provides me with access to Google's courses, mentorship, and a community of like minded students. I am currently working on completing the IT Automation with Python certificate, which I am very excited about! I believe this has strong parallels to my dream career of machine learning engineering, as they both involve teaching systems to learn from data and make decisions without explicit programming! As of today, I'm 20% done, can't wait to see what I learn!
-
+    The game I built in the alotted hour and a half, ReflexReaction, is a game I was suprised worked so well. The concept is simple, click the shape the instructions say. This can be a red square, blue triangle, or any shape and color the game decides. Yet as the levels increase, more obstacles are added; the shapes start moving, the instructions start to throw you off, and it all goes faster and faster until you lose!
+    I was super proud that I won second place and got a branded thermos!
+    
+    I'm looking forward to using Devvit in the future!
+    
     Connor
     `,
   },
