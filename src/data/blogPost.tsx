@@ -148,21 +148,22 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "Devvit",
     title: "Hackathon at Reddit HQ!",
-    image: "/blogposts/proj.png",
+    image: "/blogposts/devvit.jpg",
     date: "2025-8-12",
     tags: ["Career"],
     featured: true,
     summary: "Summer classes are finished so now I get to work on lots of projects!",
     content: `
-    I'm super grateful to have attended Reddit's hackathon the other day where they showed their new game hosting platform, Devvit! It was super cool to learn about the platform and my game ReflexReaction even won second place!
+    I'm super grateful to have attended Reddit's hackathon the other day, where they showcased their new game hosting platform, Devvit! It was so cool to learn about the platform, and my game, ReflexReaction, even won second place!
 
-    The platform is a new gaming push that the tech company is spearheading. All you have to do is build the game, and they take care of the backend and hosting for you! This is a great way to get started in game development. Though this isn't the route I am aiming for in the future, it was great to learn about new technologies being developed!
+    The platform is a new gaming initiative the company is spearheading. All you have to do is build the game, and they handle the backend and hosting for you! This is a great way to get started in game development. While this isn't the route I'm aiming for in the future, it was a great opportunity to learn about new technologies being developed.
 
-    The game I built in the alotted hour and a half, ReflexReaction, is a game I was suprised worked so well. The concept is simple, click the shape the instructions say. This can be a red square, blue triangle, or any shape and color the game decides. Yet as the levels increase, more obstacles are added; the shapes start moving, the instructions start to throw you off, and it all goes faster and faster until you lose!
-    I was super proud that I won second place and got a branded thermos!
-    
+    The game I built in the allotted hour and a half, ReflexReaction, is a game I was surprised worked so well. The concept is simple: click the shape the instructions tell you to. This could be a red square, a blue triangle, or any shape and color the game decides. As the levels increase, more obstacles are added; the shapes start moving, the instructions begin to throw you off, and everything gets faster and faster until you lose!
+
+    I'm so proud that I won second place and got a branded thermos!
+
     I'm looking forward to using Devvit in the future!
-    
+
     Connor
     `,
   },
