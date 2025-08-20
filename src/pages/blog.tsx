@@ -111,7 +111,7 @@ export default function Blog() {
                       />
                     </div>
                     {/* Title and Summary */}
-                    <div className="py-4 pl-4 bg-gray-100 bg-gray-100/75 backdrop-blur-sm">
+                    <div className="py-4 pl-4 bg-gray-100/75 backdrop-blur-sm">
                       <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-1">{post.title}</h3>
                       <p className="text-md text-gray-600">{truncate(post.summary)}</p>
                     </div>
