@@ -3,16 +3,12 @@ import Navbar from "@/components/navbar";
 import Image from "next/image";
 import { blogPosts } from "@/data/blogPost";
 import { useEffect, useRef, useState, useMemo } from "react";
-import { motion, time, useAnimation } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import Link from "next/link";
 
 export default function Blog() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [carouselX, setCarouselX] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const startAutoplay = () => {};
-  const stopAutoplay = () => {};
   const [carouselWidth, setCarouselWidth] = useState(0);
   const carouselControls = useAnimation();
 
@@ -33,7 +29,6 @@ export default function Blog() {
   useEffect(() => {
     if (!carouselRef.current) return;
 
-    const container = carouselRef.current;
     const totalWidth = carouselRef.current.scrollWidth / 2; // Because we duplicated posts
 
     const loop = async () => {
