@@ -22,13 +22,22 @@ export default function Projects() {
       The repo is also pinned on my GitHub profile.`,
     },
     {
-      name: "StockBot - AI Stock Trading Agent",
+      name: "StockBot - AI Stock Trading Agent (Active Development)",
       image: "/projects/stockbot.png",
       description: `StockBot is my current passion project, in which we aim to take advantage of the patterns of the financial world using machine learning.
       
       We aim to collect and analyze all aspects of the market that any real world trader would consider; from price history and politician trading, to news articles and social media sentiment. This data is ran through multiple reasoning pipelines before a trade decision is made, in which a reinforcement learning engine optimizes the approach based on decision success.
       
       I founded the project with one of my best friends and our team has evolved into over a dozen. This project is still actively in development, and I couldn't be more proud of the progress we made.`,
+    },
+    {
+      name: "SilentConvo - Anonymous Group Therapy (Active Development)",
+      image: "/projects/silentconvo.png",
+      description: `SilentConvo is my latest project in my time being a founding engineer for GeekSpeaker inc., a startup focused on empowering people through tech.
+      
+      SilentConvo establishes small group therapy sessions for free. We aim to provide our services to schools and companies, in which they can offer our platform as a benefit to their students and employees.
+      
+      Though the project is actively in development, it has already been a great learning experience in full-stack development, and team collaboration. It's been a pleasure working with the team to bring this idea to life.`,
     },
     {
       name: "CUNY Compass Chatbot - IBM Hackathon",
