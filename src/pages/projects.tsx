@@ -11,7 +11,7 @@ export default function Projects() {
   const projects = [
     {
       name: "StudySync - HackHarvard",
-      image: "/StudySync.jpeg",
+      image: "/projects/StudySync.jpeg",
       description: `Developed for Harvard's 10th annual hackathon, Study Sync is an AI-powered quiz generator for professors to gauge student engagement and recieve realtime feedback.
       
       Our team developed the web using Next.js and Tailwind CSS, and used the Gemini API to generate lecture quizzes based on the professor's lecture material.
@@ -22,8 +22,17 @@ export default function Projects() {
       The repo is also pinned on my GitHub profile.`,
     },
     {
+      name: "StockBot - AI Stock Trading Agent",
+      image: "/projects/stockbot.png",
+      description: `StockBot is my current passion project, in which we aim to take advantage of the patterns of the financial world using machine learning.
+      
+      We aim to collect and analyze all aspects of the market that any real world trader would consider; from price history and politician trading, to news articles and social media sentiment. This data is ran through multiple reasoning pipelines before a trade decision is made, in which a reinforcement learning engine optimizes the approach based on decision success.
+      
+      I founded the project with one of my best friends and our team has evolved into over a dozen. This project is still actively in development, and I couldn't be more proud of the progress we made.`,
+    },
+    {
       name: "CUNY Compass Chatbot - IBM Hackathon",
-      image: "/watsonx.jpeg",
+      image: "/projects/watsonx.jpeg",
       description: `Built during the IBM Watsonx hackathon, CUNY Compass is an AI chatbot designed to assist students in the City University of New York system. It helps users explore schools, majors, programs, and classes, and answers questions about financial aid, tuition, admissions, and best practices for affordable education.
 
       I led the project’s ideation and focused on building the school and curriculum assistant module. By training Watsonx on curated datasets; including course catalogs, admissions brochures, major spreadsheets, and FAQ content, we ensured the chatbot returned clean, relevant answers. It uses a prompt-augmented retrieval system and live web search capabilities to provide up-to-date, student-focused guidance.
@@ -32,7 +41,7 @@ export default function Projects() {
     },
     {
       name: "NYC Violation Parser - Datathon Winner",
-      image: "/nycviolations.png",
+      image: "/projects/nycviolations.png",
       description: `Created for City Tech’s first datathon, this project is a web-based data tool that identifies the most common and costly business violations across New York City. The goal: help business owners stay compliant and avoid preventable fines.
 
       Our team cleaned and analyzed over 20 million violation records using Python, Pandas, and Matplotlib. I led the identification of fines that were both frequent and easily avoidable. We ranked violations by frequency and cost, and organized results by NYC borough for location-specific insights.
@@ -41,19 +50,19 @@ export default function Projects() {
     },
     {
       name: "STIHL Web Scrapper",
-      image: "/stihlscraper.png",
+      image: "/projects/stihlscraper.png",
       description: "Created a Python-based web scraper that collected, parsed, and exported detailed product data from STIHL's online store. Extracted information includes product names, prices, technical specifications, and images URLs. Results were delivered in both CSV and JSON formats for flexible use.",
     },
     {
       name: "TeamTasker",
-      image: "/taskmanager.png",
+      image: "/projects/taskmanager.png",
       description: `TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.
 
       Built for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.`,
     },
     {
       name: "SnapLang - No longer in development",
-      image: "/snaplangimg.png",
+      image: "/projects/snaplangimg.png",
       description: `An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.
 
       These translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.
