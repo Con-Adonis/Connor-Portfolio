@@ -10,13 +10,16 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "SnapLang - In Development",
-      image: "/snaplangimg.png",
-      description: `An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.
-
-      These translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.
-
-      This project is currently in development.`,
+      name: "StudySync - HackHarvard",
+      image: "/StudySync.jpeg",
+      description: `Developed for Harvard's 10th annual hackathon, Study Sync is an AI-powered quiz generator for professors to gauge student engagement and recieve realtime feedback.
+      
+      Our team developed the web using Next.js and Tailwind CSS, and used the Gemini API to generate lecture quizzes based on the professor's lecture material.
+      
+      The DevPost submission can be found here:
+      https://devpost.com/software/studysync-bh49lj?ref_content=my-projects-tab&ref_feature=my_projects
+      
+      The repo is also pinned on my GitHub profile.`,
     },
     {
       name: "CUNY Compass Chatbot - IBM Hackathon",
@@ -47,6 +50,15 @@ export default function Projects() {
       description: `TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.
 
       Built for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.`,
+    },
+    {
+      name: "SnapLang - No longer in development",
+      image: "/snaplangimg.png",
+      description: `An AI-powered flashcard builder using real-world objects. SnapLang uses a convolutional neural network to transform photos of everyday items into bilingual flashcards, translating object names from English into the user’s chosen language.
+
+      These translations can be instantly added to a personalized deck, making SnapLang ideal for immersive vocabulary learning. It integrates smoothly with flashcard tools like Anki and Quizlet. Built with TensorFlow, Next.js, and a language model API, SnapLang explores the potential of AI to make language learning more visual, natural, and personalized.
+
+      This project is currently in development.`,
     },
   ];
 
