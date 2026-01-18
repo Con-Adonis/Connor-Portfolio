@@ -15,12 +15,12 @@ export default function Home() {
               Welcome to my portfolio!
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-4 max-w-2xl">
+            <div className="flex flex-wrap gap-4 pt-4 max-w-2xl justify-center md:justify-start">
               {/* Resume */}
               <a
                 href="/Connor_Kavleski_Resume.pdf"
                 download
-                className="px-3 py-1 bg-white text-black border border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
+                className="px-3 py-1 bg-white text-black border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
               >
                 Download my resume!
               </a>
@@ -28,7 +28,7 @@ export default function Home() {
               {/* Email */}
               <a
                 href="mailto:conkavleski@gmail.com"
-                className="px-3 py-1 bg-white text-black border border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
+                className="px-3 py-1 bg-white text-black border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
               >
                 Email me!
               </a>
@@ -37,7 +37,7 @@ export default function Home() {
               <a
                 href="https://github.com/Con-Adonis"
                 target="_blank"
-                className="px-3 py-1 bg-white text-black border border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
+                className="px-3 py-1 bg-white text-black border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
               >
                 GitHub
               </a>
@@ -46,7 +46,7 @@ export default function Home() {
               <a
                 href="https://www.linkedin.com/in/connor-kavleski/"
                 target="_blank"
-                className="px-3 py-1 bg-white text-black border border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
+                className="px-3 py-1 bg-white text-black border-2 border-black rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-99 hover:bg-black hover:text-white"
               >
                 LinkedIn
               </a>
@@ -68,8 +68,8 @@ export default function Home() {
               A little bit about me!
             </h2>
             <p className="text-gray-700 text-lg leading-relaxed">
-              Hi, I&apos;m Connor! I&apos;m a computer science student with a passion for machine learning, full-stack development, and building real tools that help people.
-              I&apos;ve developed AI-powered tools like SnapLang and participate in hackathons, tech clubs, and student government at the New York City College of Technology in Brooklyn, New York.
+              Hi, I&apos;m Connor! I&apos;m a computer systems technology student with a passion for machine learning, full-stack development, and building real tools that help people.
+              I&apos;ve developed real world systems and enjoy participating in hackathons, academic research, tech clubs, and student government at the New York City College of Technology in Brooklyn, New York.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed">
               My journey began with a curiosity in the way computers can store, retrieve, and manipulate information. This curiosity combined with a desire to solve

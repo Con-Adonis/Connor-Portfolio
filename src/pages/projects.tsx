@@ -10,18 +10,6 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "StudySync - HackHarvard",
-      image: "/projects/StudySync.jpeg",
-      description: `Developed for Harvard's 10th annual hackathon, Study Sync is an AI-powered quiz generator for professors to gauge student engagement and recieve realtime feedback.
-      
-      Our team developed the web using Next.js and Tailwind CSS, and used the Gemini API to generate lecture quizzes based on the professor's lecture material.
-      
-      The DevPost submission can be found here:
-      https://devpost.com/software/studysync-bh49lj?ref_content=my-projects-tab&ref_feature=my_projects
-      
-      The repo is also pinned on my GitHub profile.`,
-    },
-    {
       name: "StockBot - AI Stock Trading Agent (Active Development)",
       image: "/projects/stockbot.png",
       description: `StockBot is my current passion project, in which we aim to take advantage of the patterns of the financial world using machine learning.
@@ -32,12 +20,24 @@ export default function Projects() {
     },
     {
       name: "SilentConvo - Anonymous Group Therapy (Active Development)",
-      image: "/projects/silentconvo.png",
+      image: "/projects/silentc.png",
       description: `SilentConvo is my latest project in my time being a founding engineer for GeekSpeaker inc., a startup focused on empowering people through tech.
       
       SilentConvo establishes small group therapy sessions for free. We aim to provide our services to schools and companies, in which they can offer our platform as a benefit to their students and employees.
       
       Though the project is actively in development, it has already been a great learning experience in full-stack development, and team collaboration. It's been a pleasure working with the team to bring this idea to life.`,
+    },
+    {
+      name: "StudySync - HackHarvard",
+      image: "/projects/StudySync.jpeg",
+      description: `Developed for Harvard's 10th annual hackathon, Study Sync is an AI-powered quiz generator for professors to gauge student engagement and recieve realtime feedback.
+      
+      Our team developed the web using Next.js and Tailwind CSS, and used the Gemini API to generate lecture quizzes based on the professor's lecture material.
+      
+      The DevPost submission can be found here:
+      https://devpost.com/software/studysync-bh49lj?ref_content=my-projects-tab&ref_feature=my_projects
+      
+      The repo is also pinned on my GitHub profile.`,
     },
     {
       name: "CUNY Compass Chatbot - IBM Hackathon",
@@ -64,7 +64,7 @@ export default function Projects() {
     },
     {
       name: "TeamTasker",
-      image: "/projects/taskmanager.png",
+      image: "/projects/teamtasker.png",
       description: `TeamTasker is a simple web-based task manager designed to help small teams stay organized. It allows users to create tasks with a title, description, due date, priority level (low, medium, or high), and assign responsible team members.
 
       Built for a project management course, I served as both project manager and sole developer, writing the entire app from scratch using HTML, CSS, and vanilla JavaScript. This earned me extra credit and gave me hands-on experience in interface design, task scoping, and end-to-end development.`,
@@ -96,125 +96,147 @@ export default function Projects() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white pt-20 px-4 sm:px-6 md:px-12">
-        <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center pt-4">
-          {projects.map((project, index) => { // Use index for mapping
-            const isExpanded = expandedProjectIndex === index; // Compare with index
-            const visibilityClass = isExpanded ? "invisible" : "";
+      <main className="min-h-screen bg-white pt-20">
+        {/* Projects Grid */}
+        <div className="px-2 sm:px-6 md:px-12">
+          <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center pt-4">
+            {projects.map((project, index) => { // Use index for mapping
+              const isExpanded = expandedProjectIndex === index; // Compare with index
+              const visibilityClass = isExpanded ? "invisible" : "";
 
-            return (
-              <div
-                key={project.name + index} // Use project name and index as key
-                onClick={() => setExpandedProjectIndex(index)} // Pass index to state
-                className={`relative bg-gray-100 rounded-lg overflow-hidden w-full h-full aspect-[4/3] max-w-sm shadow-lg group cursor-pointer transition hover:scale-105 hover:shadow-xl ${visibilityClass}`}
-              >
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition duration-300"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute bottom-0 left-0 w-full bg-gray-200/75 text-black p-5 backdrop-blur-sm">
-                  <h2 className="text-lg font-semibold">{project.name}</h2>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <AnimatePresence>
-          {expandedProjectIndex !== null && (
-            <motion.div
-              key="modal"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="fixed inset-0 bg-black/30 flex justify-center items-start pt-28 px-4 z-40 backdrop-blur-sm"
-              onClick={() => setExpandedProjectIndex(null)} // Close modal by setting index to null
-            >
-              <motion.div
-                layout
-                onClick={(e) => e.stopPropagation()}
-                className="bg-white w-full max-w-5xl rounded-lg overflow-auto max-h-[80vh] shadow-2xl relative transition-all duration-500 ease-in-out scale-100"
-                style={{ transformOrigin: "center center" }}
-              >
-                <div className="sticky top-0 w-full bg-gray-800 text-white pl-6 py-3 flex justify-between items-center z-10">
-                  <h2 className="text-xl font-semibold mx-auto px-6">
-                    {projects[expandedProjectIndex]?.name} {/* Access project by index */}
-                  </h2>
-                  <button
-                    onClick={() => setExpandedProjectIndex(null)} // Close modal
-                    className="absolute left-4 hover:opacity-80 cursor-pointer"
-                  >
-                    {/* Top-left arrow */}
-                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" className="h-5 w-5 transform rotate-180" viewBox="-8 1 20 20" fill="currentColor">
-                      <path d="M3 7v-4a1 1 0 011-1h4a1 1 0 110 2H5v3a1 1 0 11-2 0z" />
-                    </svg>
-
-                    {/* Bottom-right arrow */}
-                    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" className="h-5 w-5 transform -rotate-180" viewBox="8 -1 20 20" fill="currentColor">
-                      <path d="M17 13v4a1 1 0 01-1 1h-4a1 1 0 110-2h3v-3a1 1 0 112 0z" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Image with hint to scroll down */}
-                <div className="relative">
-                  <div className="relative w-full aspect-[4/3] max-h-[70vh]">
-                    <Image
-                      src={projects[expandedProjectIndex]?.image || ""} // Access image by index
-                      alt="Expanded"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 800px"
-                    />
-                  </div>
-                  {/* Scroll hint arrow */}
-                  <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-9 animate-bounce">
-                    <svg
-                      xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
-                      className="h-6 w-6 text-gray-700"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </div>
-                </div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
-                  className="p-6 space-y-4 text-gray-800"
+              return (
+                <div
+                  key={project.name + index} // Use project name and index as key
+                  onClick={() => setExpandedProjectIndex(index)} // Pass index to state
+                  className={`relative bg-gray-100 rounded-lg overflow-hidden w-full h-full aspect-[4/3] max-w-sm shadow-lg group cursor-pointer transition hover:scale-105 hover:shadow-xl ${visibilityClass}`}
                 >
-                  <p className="text-md leading-relaxed whitespace-pre-line">
-                    {
-                      projects[expandedProjectIndex]?.description
-                    }
-                  </p>
-                  <div className="flex justify-center">
-                    <a
-                      href={`/projects/$
-                        {
-                          projects[expandedProjectIndex]?.name
-                            .toLowerCase()
-                            .replace(/\s+/g, "-")
-                        }
-                      `}
-                      className="text-blue-600 underline"
-                    >
-                      View full project details (coming soon) →
-                    </a>
+                  <Image
+                    src={project.image}
+                    alt={project.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-300"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute bottom-0 left-0 w-full bg-gray-200/75 text-black p-5 backdrop-blur-sm">
+                    <h2 className="text-lg font-semibold">{project.name}</h2>
                   </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <AnimatePresence>
+            {expandedProjectIndex !== null && (
+              <motion.div
+                key="modal"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.35, ease: "easeIn" }}
+                className="fixed inset-0 bg-black/40 flex justify-center items-start pt-28 px-4 z-40 backdrop-blur-sm"
+                onClick={() => setExpandedProjectIndex(null)} // Close modal by setting index to null
+              >
+                <motion.div
+                  layout
+                  onClick={(e) => e.stopPropagation()}
+                  className="bg-white w-full max-w-5xl rounded-lg overflow-auto max-h-[80vh] shadow-2xl relative transition-all duration-500 ease-in-out scale-100"
+                  style={{ transformOrigin: "center center" }}
+                >
+                  <div className="sticky top-0 w-full bg-gray-800 text-white pl-6 py-3 flex justify-between items-center z-10">
+                    <h2 className="text-xl font-semibold mx-auto px-6">
+                      {projects[expandedProjectIndex]?.name} {/* Access project by index */}
+                    </h2>
+                    <button
+                      onClick={() => setExpandedProjectIndex(null)} // Close modal
+                      className="absolute left-4 hover:opacity-80 cursor-pointer"
+                    >
+                      {/* Top-left arrow */}
+                      <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" className="h-5 w-5 transform rotate-180" viewBox="-8 1 20 20" fill="currentColor">
+                        <path d="M3 7v-4a1 1 0 011-1h4a1 1 0 110 2H5v3a1 1 0 11-2 0z" />
+                      </svg>
+
+                      {/* Bottom-right arrow */}
+                      <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" className="h-5 w-5 transform -rotate-180" viewBox="8 -1 20 20" fill="currentColor">
+                        <path d="M17 13v4a1 1 0 01-1 1h-4a1 1 0 110-2h3v-3a1 1 0 112 0z" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Image with hint to scroll down */}
+                  <div className="relative">
+                    <div className="relative w-full aspect-[4/3] max-h-[70vh]">
+                      <Image
+                        src={projects[expandedProjectIndex]?.image || ""} // Access image by index
+                        alt="Expanded"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 800px"
+                      />
+                    </div>
+                    {/* Scroll hint arrow */}
+                    <div className="absolute bottom-[calc(0%))] left-1/2 transform -translate-x-1/2 z-9 animate-bounce">
+                      <svg
+                        xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"
+                        className="h-6 w-6 text-gray-700"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.15 }}
+                    className="p-6 space-y-4 text-gray-800"
+                  >
+                    <p className="text-md leading-relaxed whitespace-pre-line">
+                      {
+                        projects[expandedProjectIndex]?.description
+                      }
+                    </p>
+                    <div className="flex justify-center">
+                      <a
+                        href={`/projects/$
+                          {
+                            projects[expandedProjectIndex]?.name
+                              .toLowerCase()
+                              .replace(/\s+/g, "-")
+                          }
+                        `}
+                        className="text-blue-600 underline"
+                      >
+                        View full project details (coming soon) →
+                      </a>
+                    </div>
+                  </motion.div>
                 </motion.div>
               </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Footer */}
+        <footer className="bg-gray-200 text-gray-600 text-center py-4 mt-20 px-0">
+          <p className="text-md pb-1">
+            <a href="mailto:conkavleski@gmail.com" className="hover:underline px-4">
+              Email
+            </a>
+            <a href="https://github.com/Con-Adonis" className="hover:underline px-4">
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/connor-kavleski/"
+              className="hover:underline px-4"
+            >
+              LinkedIn
+            </a>
+          </p>
+          <p className="text-sm">&copy; {new Date().getFullYear()} Connor Kavleski. All rights reserved.</p>
+        </footer>
       </main>
     </>
   );
