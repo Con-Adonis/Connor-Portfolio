@@ -10,7 +10,7 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "StockBot - AI Stock Trading Agent (Active Development)",
+      name: "StockBot - Stock Trading Agent (Active Development)",
       image: "/projects/stockbot.png",
       description: `StockBot is my current passion project, in which we aim to take advantage of the patterns of the financial world using machine learning.
       
@@ -26,6 +26,15 @@ export default function Projects() {
       SilentConvo establishes small group therapy sessions for free. We aim to provide our services to schools and companies, in which they can offer our platform as a benefit to their students and employees.
       
       Though the project is actively in development, it has already been a great learning experience in full-stack development, and team collaboration. It's been a pleasure working with the team to bring this idea to life.`,
+    },
+    {
+      name: "CareerAI (Academic Research Project)",
+      image: "/projects/careerAI.png",
+      description: `CareerAI is an academic research project I led during my Fall '25 semester at City Tech.
+      
+      The project explores the prospect of automating the career application process for the average job seeker. By leveraging large language models, web scraping, and basic string comparison techniques; my team and I built the framework for a system that searches for, fills out, and submits job applications on behalf of the user.
+      
+      This project is still in its early stages, as the research was meant to be exploratory. However, the idea of this project gaining momentum excites me.`,
     },
     {
       name: "StudySync - HackHarvard",
@@ -80,19 +89,6 @@ export default function Projects() {
     },
   ];
 
-  {/*Removing scroll ability when maximizing project */}
-  useEffect(() => {
-    if (expandedProjectIndex !== null) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto"; // cleanup
-    };
-  }, [expandedProjectIndex]);
-
   return (
     <>
       <Navbar />
@@ -102,7 +98,7 @@ export default function Projects() {
           <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center pt-4">
             {projects.map((project, index) => { // Use index for mapping
               const isExpanded = expandedProjectIndex === index; // Compare with index
-              const visibilityClass = isExpanded ? "invisible" : "";
+              const visibilityClass = isExpanded ? "" : "";  //ToDo: change animation to smoothly open project mini box
 
               return (
                 <div
@@ -134,7 +130,7 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.35, ease: "easeIn" }}
                 className="fixed inset-0 bg-black/40 flex justify-center items-start pt-28 px-4 z-40 backdrop-blur-sm"
-                onClick={() => setExpandedProjectIndex(null)} // Close modal by setting index to null
+                onClick={() => [setExpandedProjectIndex(null), ]} // Close modal by setting index to null
               >
                 <motion.div
                   layout
@@ -209,7 +205,7 @@ export default function Projects() {
                         `}
                         className="text-blue-600 underline"
                       >
-                        View full project details (coming soon) →
+                        View the project GitHub
                       </a>
                     </div>
                   </motion.div>

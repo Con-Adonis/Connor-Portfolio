@@ -73,7 +73,7 @@ export default function Blog() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white pt-24 pb-20">
+      <main className="min-h-screen bg-white pt-24 pb-10">
         <h1 className="text-5xl font-bold text-center mb-12 text-gray-900">
           My Blog
         </h1>
@@ -176,6 +176,25 @@ export default function Blog() {
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-200 text-gray-600 text-center py-4 px-0">
+        <p className="text-md pb-1">
+          <a href="mailto:conkavleski@gmail.com" className="hover:underline px-4">
+            Email
+          </a>
+          <a href="https://github.com/Con-Adonis" className="hover:underline px-4">
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/connor-kavleski/"
+            className="hover:underline px-4"
+          >
+            LinkedIn
+          </a>
+        </p>
+        <p className="text-sm">&copy; {new Date().getFullYear()} Connor Kavleski. All rights reserved.</p>
+      </footer>
     </>
   );
 }

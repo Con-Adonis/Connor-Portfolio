@@ -62,7 +62,7 @@ export default function Home() {
         </section>
 
         {/* About Me Section */}
-        <section className="bg-gray-50 py-20 px-6">
+        <section className="bg-gray-50 pt-20 px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-semibold text-black">
               A little bit about me!
@@ -79,7 +79,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-200 text-gray-600 text-center py-4 mt-20">
+        <footer className="bg-gray-200 text-gray-600 text-center py-4 mt-10">
           <p className="text-md pb-1">
             <a href="mailto:conkavleski@gmail.com" className="hover:underline px-4">
               Email
